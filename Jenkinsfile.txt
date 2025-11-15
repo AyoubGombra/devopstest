@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/AyoubGombra/devopstest.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Compilation du projet...'
+                // ex sous Linux :
+                // sh 'mvn clean package'
+                // sous Windows :
+                // bat 'mvn clean package'
+            }
+        }
+        stage('Tests') {
+            steps {
+                echo 'Exécution des tests...'
+                // sh 'mvn test'  ou  bat 'mvn test'
+            }
+        }
+    }
+}
